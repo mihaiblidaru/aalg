@@ -42,6 +42,13 @@
 *.idb
 *.pdb
 
+# Executables
+ejercicio1
+ejercicio2
+ejercicio3
+ejercicio4
+ejercicio5
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
