@@ -211,25 +211,45 @@ int partir(int* tabla, int ip, int iu, int *pos){
 /* Funcion: medio                                          */
 /* Fecha: 31-10-2017                                       */
 /*                                                         */
-/* Funcion que  ordena una tabla usando                    */
-/* el algoritmo QuickSort                                  */
+/* Funcion que calcula el pivote de una tabla. En este     */
+/* siempre usa el primer elemento de la tabla              */
 /*                                                         */
 /* Entrada:                                                */
-/* int* tabla: un puntero a la tabla que se quiere ordenar */
+/* int* tabla: un puntero a la tabla                       */
 /* int ip: indice inferior                                 */
 /* int iu: indice superior                                 */
+/* int* pos: puntero al entero donde guardar el pivote     */
 /*                                                         */
 /* Salida:                                                 */
-/* Número de OBs del algoritmo                             */
+/* Número de OBs necesarios para buscar el pivote. 0 en    */
+/* este caso.                                              */
 /*                                                         */
 /***********************************************************/
- 
- 
 int medio(int *tabla, int ip, int iu,int *pos){
     *pos = ip;
     return 0;
 }
 
+
+/***********************************************************/
+/* Funcion: medio_stat                                     */
+/* Fecha: 31-10-2017                                       */
+/*                                                         */
+/* Funcion que calcula el pivote de una tabla. En este     */
+/* caso se elige la mediana entre el primero, el ultimo y  */
+/* el elemento mitad                                       */
+/*                                                         */
+/* Entrada:                                                */
+/* int* tabla: un puntero a la tabla                       */
+/* int ip: indice inferior                                 */
+/* int iu: indice superior                                 */
+/* int* pos: puntero al entero donde guardar el pivote     */
+/*                                                         */
+/* Salida:                                                 */
+/* Número de OBs necesarios para buscar el pivote. 3 en    */
+/* este caso.                                              */
+/*                                                         */
+/***********************************************************/
 int medio_stat(int*tabla, int ip, int iu, int *pos){
     int med = (ip + iu) / 2;
     
@@ -242,12 +262,10 @@ int medio_stat(int*tabla, int ip, int iu, int *pos){
     }else{
         if(tabla[med] < tabla[iu]){
             *pos = tabla[ip] < tabla[iu] ? ip : iu;
-            
         }else{
             *pos = med;
         }
     }
-    
     return 3;
 }
 
