@@ -20,6 +20,7 @@ int medio_stat(int* tabla, int ip, int iu, int *pos);
 int medio_avg(int* tabla, int ip, int iu, int *pos);
 void swap(int* a, int* b);
 
+
 /***********************************************************/
 /* Funcion: Bubblesort                                     */
 /* Fecha: 03-10-2017                                       */
@@ -56,6 +57,7 @@ int BubbleSort(int* tabla, int ip, int iu){
     }
     return ob;
 }
+
 
 /***********************************************************/
 /* Funcion: MergeSort                                     */
@@ -120,7 +122,6 @@ int QuickSort(int* tabla, int ip, int iu){
     if(ip == iu)
         return 0;
     else{
-        
         obs += partir(tabla,ip,iu, &m);
         
         if(ip  < m-1){
@@ -133,8 +134,8 @@ int QuickSort(int* tabla, int ip, int iu){
     }
     return obs;
 }
-
-
+                
+        
 /***********************************************************/
 /* Funcion: merge                                          */
 /* Fecha: 03-10-2017                                       */
