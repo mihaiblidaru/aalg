@@ -95,11 +95,11 @@ int MergeSort(int* tabla, int ip, int iu){
 
 
 /***********************************************************/
-/* Funcion: QuickSort                                     */
+/* Funcion: QuickSort                                      */
 /* Fecha: 03-10-2017                                       */
 /*                                                         */
 /* Funcion que ordena una tabla usando                     */
-/* el algoritmo QuickSort                                 */
+/* el algoritmo QuickSort                                  */
 /*                                                         */
 /* Entrada:                                                */
 /* int* tabla: un puntero a la tabla que se quiere ordenar */
@@ -135,9 +135,26 @@ int QuickSort(int* tabla, int ip, int iu){
 }
 
 
+/***********************************************************/
+/* Funcion: merge                                          */
+/* Fecha: 03-10-2017                                       */
+/*                                                         */
+/* Funcion que a partir de dos tablas adyacentes ordenadas */
+/* crea una unica tabla ordenada                           */
+/*                                                         */
+/* Entrada:                                                */
+/* int* tabla: un puntero a la tabla que se quiere ordenar */
+/* int ip: indice inferior                                 */
+/* int iu: indice superior                                 */
+/* int imedio: el indice por el que estan partidas las dos */
+/*             tablas                                      */
+/*                                                         */
+/* Salida:                                                 */
+/* Número de OBs que realiza                               */
+/*                                                         */
+/***********************************************************/
 int merge(int* tabla, int ip, int iu, int imedio){
-    int * aux = NULL, i = ip, j = imedio + 1, k = 0;
-    
+    int * aux = NULL, i = ip, j = imedio + 1, k = 0;  
     int n_obs = 0; 
     
     if(!tabla || ip > imedio || imedio > iu) 
@@ -151,15 +168,13 @@ int merge(int* tabla, int ip, int iu, int imedio){
         if(tabla[i] < tabla[j]){
             aux[k] = tabla[i];
             i++;
-            
         }else{
             aux[k] = tabla[j];
             j++;
         }
         k++;
-
     }
-    
+            
     if(i>imedio){
         while(j<=iu){
             aux[k] = tabla[j];
@@ -168,23 +183,40 @@ int merge(int* tabla, int ip, int iu, int imedio){
         }  
     }else if(j>iu){
         while(i<=imedio){
-            
             aux[k] = tabla[i];
             i++;
             k++;
-            
         }
     }
-    
+            
     for(i=ip, j=0; i<=iu; j++, i++){
         tabla[i] = aux[j];
     }
-    
+            
     free(aux);
     return n_obs;
 }
 
-
+     
+/***********************************************************/
+/* Funcion: partir                                         */
+/* Fecha: 03-10-2017                                       */
+/*                                                         */
+/* Funcion que coloca los elementos de la tabla de forma   */
+/* que todos los que son menores que el pivote se quedan   */
+/* a su izquierda y todos los que son mayores a la derecha.*/
+/*                                                         */
+/*                                                         */
+/* Entrada:                                                */
+/* int* tabla: un puntero a la tabla que se quiere ordenar */
+/* int ip: indice inferior                                 */
+/* int iu: indice superior                                 */
+/* int* pos: puntero al entero donde se guarda el indice   */
+/*           del pivote                                    */
+/* Salida:                                                 */
+/* Número de operaciones basicas que realiza               */
+/*                                                         */
+/***********************************************************/
 int partir(int* tabla, int ip, int iu, int *pos){
     int m, k, i, obs = 0;
     obs += medio(tabla,ip, iu, &m); //Añadir las obs del calculo del pivote
@@ -206,25 +238,24 @@ int partir(int* tabla, int ip, int iu, int *pos){
 }
 
 
-
-/***********************************************************/
-/* Funcion: medio                                          */
-/* Fecha: 31-10-2017                                       */
-/*                                                         */
-/* Funcion que calcula el pivote de una tabla. En este     */
-/* siempre usa el primer elemento de la tabla              */
-/*                                                         */
-/* Entrada:                                                */
-/* int* tabla: un puntero a la tabla                       */
-/* int ip: indice inferior                                 */
-/* int iu: indice superior                                 */
-/* int* pos: puntero al entero donde guardar el pivote     */
-/*                                                         */
-/* Salida:                                                 */
-/* Número de OBs necesarios para buscar el pivote. 0 en    */
-/* este caso.                                              */
-/*                                                         */
-/***********************************************************/
+/************************************************************/
+/* Funcion: medio                                           */
+/* Fecha: 31-10-2017                                        */
+/*                                                          */
+/* Funcion que calcula el pivote de una tabla. En este caso */
+/* siempre usa el primer elemento de la tabla               */
+/*                                                          */
+/* Entrada:                                                 */
+/* int* tabla: un puntero a la tabla                        */
+/* int ip: indice inferior                                  */
+/* int iu: indice superior                                  */
+/* int* pos: puntero al entero donde guardar el pivote      */
+/*                                                          */
+/* Salida:                                                  */
+/* Número de OBs necesarios para buscar el pivote. 0 en     */
+/* este caso.                                               */
+/*                                                          */
+/************************************************************/
 int medio(int *tabla, int ip, int iu,int *pos){
     *pos = ip;
     return 0;
@@ -237,7 +268,7 @@ int medio(int *tabla, int ip, int iu,int *pos){
 /*                                                         */
 /* Funcion que calcula el pivote de una tabla. En este     */
 /* caso se elige la mediana entre el primero, el ultimo y  */
-/* el elemento mitad                                       */
+/* el elemento mitad de la tabla                           */
 /*                                                         */
 /* Entrada:                                                */
 /* int* tabla: un puntero a la tabla                       */
@@ -269,6 +300,25 @@ int medio_stat(int*tabla, int ip, int iu, int *pos){
     return 3;
 }
 
+
+/************************************************************/
+/* Funcion: medio_avg                                       */
+/* Fecha: 31-10-2017                                        */
+/*                                                          */
+/* Funcion que calcula el pivote de una tabla. En este caso */
+/* siempre usa el elemento mitad de la tabla                */
+/*                                                          */
+/* Entrada:                                                 */
+/* int* tabla: un puntero a la tabla                        */
+/* int ip: indice inferior                                  */
+/* int iu: indice superior                                  */
+/* int* pos: puntero al entero donde guardar el pivote      */
+/*                                                          */
+/* Salida:                                                  */
+/* Número de OBs necesarios para buscar el pivote. 0 en     */
+/* este caso.                                               */
+/*                                                          */
+/************************************************************/
 int medio_avg(int *tabla, int ip, int iu, int *pos){
     if(!tabla || !pos || iu < ip)
         return ERR;
@@ -277,6 +327,19 @@ int medio_avg(int *tabla, int ip, int iu, int *pos){
     return OK;
 }
 
+
+/************************************************************/
+/* Funcion: swap                                            */
+/* Fecha: 31-10-2017                                        */
+/*                                                          */
+/* Funcion que intercambia el valor de dos enteros          */
+/*                                                          */
+/* Entrada:                                                 */
+/* int* a: puntero al primer entero                         */
+/* int* b: puntero al segunto entero                        */
+/*                                                          */
+/*                                                          */
+/************************************************************/
 void swap(int* a, int* b){
     int tmp;
     if(!a || !b)
