@@ -9,15 +9,20 @@
  *
  */
 
-#include "ordenacion.h"
-#include <math.h>
 #include <stdlib.h>
+#include <math.h>
+#include "ordenacion.h"
+
 
 int merge(int* tabla, int ip, int iu, int imedio);
 int partir(int* tabla, int ip, int iu, int *pos);
+
+/*Pivotes para quicksort */ 
 int medio(int* tabla, int ip, int iu, int *pos);
 int medio_stat(int* tabla, int ip, int iu, int *pos);
 int medio_avg(int* tabla, int ip, int iu, int *pos);
+
+/* Auxiliares*/
 void swap(int* a, int* b);
 
 
@@ -60,11 +65,11 @@ int BubbleSort(int* tabla, int ip, int iu){
 
 
 /***********************************************************/
-/* Funcion: MergeSort                                     */
+/* Funcion: MergeSort                                      */
 /* Fecha: 03-10-2017                                       */
 /*                                                         */
 /* Funcion que ordena una tabla usando                     */
-/* el algoritmo MergeSort                                 */
+/* el algoritmo MergeSort                                  */
 /*                                                         */
 /* Entrada:                                                */
 /* int* tabla: un puntero a la tabla que se quiere ordenar */
@@ -307,7 +312,7 @@ int medio_stat(int*tabla, int ip, int iu, int *pos){
 /* Fecha: 31-10-2017                                        */
 /*                                                          */
 /* Funcion que calcula el pivote de una tabla. En este caso */
-/* siempre usa el elemento mitad de la tabla                */
+/* siempre usa la posición intermedia de la tabla           */
 /*                                                          */
 /* Entrada:                                                 */
 /* int* tabla: un puntero a la tabla                        */
