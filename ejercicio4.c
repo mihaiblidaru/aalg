@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  ret = QuickSort(perm, 0, tamano - 1);
+  ret = MergeSort(perm, 0, tamano - 1);
   
   if (ret == -1) {
     printf("Error: Error en BubbleSort\n");
