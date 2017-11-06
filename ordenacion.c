@@ -225,7 +225,7 @@ int merge(int* tabla, int ip, int iu, int imedio){
 /***********************************************************/
 int partir(int* tabla, int ip, int iu, int *pos){
     int m, k, i, obs = 0;
-    obs += medio(tabla,ip, iu, &m); //Añadir las obs del calculo del pivote
+    obs += medio_avg(tabla,ip, iu, &m); //Añadir las obs del calculo del pivote
     k = tabla[m];
     swap(&tabla[ip], &tabla[m]);
     m = ip;
