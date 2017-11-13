@@ -129,7 +129,7 @@ int QuickSort(int* tabla, int ip, int iu){
     else{
         obs += partir(tabla,ip,iu, &m);
         
-        if(ip  < m-1){
+        if(ip  < m-1)  {
             obs += QuickSort(tabla, ip, m-1);
         }
         
@@ -326,11 +326,8 @@ int medio_stat(int*tabla, int ip, int iu, int *pos){
 /*                                                          */
 /************************************************************/
 int medio_avg(int *tabla, int ip, int iu, int *pos){
-    if(!tabla || !pos || iu < ip)
-        return ERR;
-
     *pos = (iu + ip)/2;
-    return OK;
+    return 0;
 }
 
 
