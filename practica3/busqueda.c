@@ -141,33 +141,30 @@ int bbin(int *tabla, int P, int U,int clave,int *ppos){
     int obs;
     if(!tabla)
         return NO_ENCONTRADO;
-    while(P != U){
+    do{
         tmp = (U - P) / 2;
         if(tabla[tmp] == clave){
             *ppos = tmp;
-            
+      	     return ENCONTRADO;     
         }else if(tabla[tmp] < clave){
             U = tmp;
         }else if(tabla[tmp] > clave){
             P = tmp;
         }
-    }
+    }while(P != U);
+	RETURN NO_ENCONTRADO
 }
 
 int blin(int *tabla,int P,int U,int clave,int *ppos)
 {
-	int i;
 	if (!tabla || P > U || P < 0 ) return NO_ENCONTRADO;
 	
-	for (i=P;i<=U;i++){
-	    if(tabla[i]==clave){
-	    	*ppos = i;
-	    	return ENCONTRADO;
-	    }
-	
+	for (i=P;i<U;i++){
+	    tabla[i] = 
+	    
 	    
 	}
-	return NO_ENCONTRADO;
+	
 }
 
 int blin_auto(int *tabla,int P,int U,int clave,int *ppos)
