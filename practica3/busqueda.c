@@ -156,14 +156,18 @@ int bbin(int *tabla, int P, int U,int clave,int *ppos){
 
 int blin(int *tabla,int P,int U,int clave,int *ppos)
 {
+	int i;
 	if (!tabla || P > U || P < 0 ) return NO_ENCONTRADO;
 	
-	for (i=P;i<U;i++){
-	    tabla[i] = 
-	    
+	for (i=P;i<=U;i++){
+	    if(tabla[i]==clave){
+	    	*ppos = i;
+	    	return ENCONTRADO;
+	    }
+	
 	    
 	}
-	
+	return NO_ENCONTRADO;
 }
 
 int blin_auto(int *tabla,int P,int U,int clave,int *ppos)
